@@ -38,7 +38,7 @@ class TestImageAspect(unittest.TestCase):
         filename_or_obj = os.path.join(CACHE_PATH, 'imgs/wallpaper.jpg')
         ai = image_aspect.ImageAspect(filename_or_obj)
         ai.aspect(width=200, height=100, aspect='thumbnail')
-        self.assertIn('data:image/JPEG;base64', ai.base64())
+        self.assertTrue('data:image/JPEG;base64' in ai.base64())
 
     def test_03_image_aspect_save(self):
         filename_or_obj = os.path.join(CACHE_PATH, 'imgs/wallpaper.jpg')
