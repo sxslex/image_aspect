@@ -21,7 +21,7 @@ import os
 # import pprint
 import unittest
 # import tempfile
-import ImageAspect
+import image_aspect
 PROJECT_APPLICATION_PATH = os.path.dirname(os.path.abspath(__file__))
 CACHE_PATH = PROJECT_APPLICATION_PATH
 
@@ -30,20 +30,20 @@ class TestImageAspect(unittest.TestCase):
 
     def test_01_image_aspect_contents(self):
         filename_or_obj = os.path.join(CACHE_PATH, 'imgs/wallpaper.jpg')
-        ai = ImageAspect.ImageAspect(filename_or_obj)
-        ai.aspect(width=200, height=100, aspect='distortion')
+        ai = image_aspect.ImageAspect(filename_or_obj)
+        ai.aspect(width=200, height=100, aspect='thumbnail')
         self.assertTrue(len(ai.contents()) > 2000)
 
     def test_02_image_aspect_base64(self):
         filename_or_obj = os.path.join(CACHE_PATH, 'imgs/wallpaper.jpg')
-        ai = ImageAspect.ImageAspect(filename_or_obj)
-        ai.aspect(width=200, height=100, aspect='distortion')
+        ai = image_aspect.ImageAspect(filename_or_obj)
+        ai.aspect(width=200, height=100, aspect='thumbnail')
         self.assertIn('data:image/JPEG;base64', ai.base64())
 
     def test_03_image_aspect_save(self):
         filename_or_obj = os.path.join(CACHE_PATH, 'imgs/wallpaper.jpg')
         new_filename = os.path.join(CACHE_PATH, 'imgs/wallpaper_new.jpg')
 
-        ai = ImageAspect.ImageAspect(filename_or_obj)
-        ai.aspect(width=200, height=100, aspect='distortion')
+        ai = image_aspect.ImageAspect(filename_or_obj)
+        ai.aspect(width=200, height=100, aspect='thumbnail')
         ai.save(new_filename)
