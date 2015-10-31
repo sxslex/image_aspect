@@ -43,7 +43,13 @@ class TestImageAspect(unittest.TestCase):
     def test_03_image_aspect_save(self):
         filename_or_obj = os.path.join(CACHE_PATH, 'imgs/wallpaper.jpg')
         new_filename = os.path.join(CACHE_PATH, 'imgs/wallpaper_new.jpg')
+        ai = image_aspect.ImageAspect(filename_or_obj)
+        ai.aspect(width=200, height=100, aspect='thumbnail')
+        ai.save(new_filename)
 
+    def test_04_image_aspect_save(self):
+        filename_or_obj = os.path.join(CACHE_PATH, 'imgs/example1.jpg')
+        new_filename = os.path.join(CACHE_PATH, 'imgs/example1_new.jpg')
         ai = image_aspect.ImageAspect(filename_or_obj)
         ai.aspect(width=200, height=100, aspect='thumbnail')
         ai.save(new_filename)
